@@ -1,0 +1,117 @@
+/*small*/
+@media screen and (max-width: 600px) {
+  /*Grid areas------------------------------------------------------------*/
+  .homeContent {  
+    display: grid; 
+    grid-template-columns: 0.5fr 0.5fr; 
+    grid-template-rows: 1fr auto;
+    gap: 0em 0em; 
+    grid-template-areas: 
+      "mainLogo account"
+      "navigation navigation"
+      "carPic carPic"
+      "review review"
+      "upgrade upgrade"
+      "foot foot"; 
+  
+  }
+  .mainLogo { 
+    grid-area: mainLogo; 
+  }
+  .account { 
+    grid-area: apply; 
+  }
+  .navigation { 
+    grid-area: navigation; 
+    margin: auto;
+  }
+  .carPic { 
+    grid-area: carPic; 
+    margin: auto;
+  }
+
+  .review { 
+    grid-area: review; 
+    margin: auto;
+  }
+
+
+  .upgrade { 
+    grid-area: upgrade; 
+    margin: auto;
+  }
+  .upgrade {  
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto;
+    gap: 1em 1em;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "DU DU"
+      "flux flame"
+      "bumper hub";
+      margin: auto;
+  }
+  .DU { 
+    grid-area: DU; 
+  }
+  .flux { 
+    grid-area: flux; 
+  }
+  .flame { 
+    grid-area: flame; 
+  }
+  .bumper { 
+    grid-area: bumper; 
+  }
+  .hub { 
+    grid-area: hub; 
+  }
+  
+  .foot { 
+    grid-area: foot; 
+    margin: auto;
+  }
+
+  
+
+  /*General Style--------------------------------------------------*/
+  body {
+    width: 95%;
+    margin:auto;
+  }
+  .mainLogo {
+    float: left;
+    font-size: 24pt;
+    padding: 0.2em;
+  }
+  
+  .navigation a {
+    font-size: 10pt;
+  }
+
+  .assets {
+    background-color: #fff;
+    opacity: 0.5; 
+    padding: 1em;
+    margin-left: 3%;
+    z-index: +1;
+    width: 30%;
+  }
+  /*Images-------------------------------------------*/
+  
+  .upgrade img {
+    width: 80%;
+    padding: 0.5em;
+    align-items: center;
+  }
+
+  .car {
+    width: 80%;
+    margin: auto;
+  }
+  .button {
+    width: 100%
+  }
+}
+

@@ -1,0 +1,166 @@
+/*Fonts*/
+@import url("https://fonts.googleapis.com/css?family=Merriweather:400,700");
+@import url("https://fonts.googleapis.com/css?family=Merienda");
+
+/*General Styling____________________________________________________________________________________*/
+html {
+  background-image: url("../images/site/checkerboard.jpg");
+    background-repeat: repeat;
+}
+
+h1,
+h2, 
+h3, 
+h4,
+h5
+  {
+  color: rgb(36, 35, 50);
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-weight: bold;
+  padding: 0.5em;
+  opacity: 1;
+}
+
+p, li{
+  color:#050212;
+  font-family: "Lucida Console", "Courier New", monospace;
+  padding: 1em;
+  max-width: 1000px;
+}
+.review li {
+  font-size: 18pt;
+}
+
+body {
+  border:rgb(1,176,211) solid 4px;
+  margin:auto;
+  background-color: #fff;
+  border-radius: 2em;
+  padding: 1em;
+}
+
+.assets {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 1em;
+  margin-left: 8%;
+  z-index: +1;
+}
+.button{
+  opacity: 1 !important;
+}
+.assets h2,
+.assets h3 {
+  opacity: 1;
+  color: rgba(1,176,211);
+  opacity: 1 !important;
+  margin: auto;
+  text-align: center;
+}
+
+.flame a, 
+.hub a, 
+.bumper a, 
+.flux a {
+  color: rgb(36, 35, 50);
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-size: 1.5em;
+ 
+ }
+
+
+
+
+/*Navigation and top of page__________________________________________________________________________________________________*/
+
+.navigation {
+    overflow: hidden;
+    background-color: rgb(36, 35, 50);
+    padding: 0.5em;
+    width: 99%;
+    display: block;
+
+  }
+  
+  .navigation a {
+    float:left;
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-weight: bold;
+  }
+  
+  .navigation a:hover {
+    cursor: pointer;
+    color: rgb(1,176,211);
+  }
+  
+  .navigation a.active {
+    color: rgb(1,176,211);
+  }
+
+  .account{
+    float: right;
+    padding-right: 1em;
+    color: rgb(36, 35, 50);
+    font-size: 14pt;
+  }
+  
+.mainLogo {
+  float: left;
+  color: rgb(36, 35, 50);
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 1em;
+  cursor: pointer;
+}
+
+.DU {
+  margin-top: 4em;
+}
+
+/*footer__________________________________________________________________________________________________________*/ 
+footer {
+  color: #f2f2f2;
+  padding: 1em;
+  text-decoration: none;
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-weight: bold;
+}
+
+
+/*Images________________________________________________________________________________________________________*/
+.flame, 
+.hub, 
+.bumper, 
+.flux { 
+  background-color: rgb(1,176,211);
+  text-align: center;
+  border: solid 3px;
+  border-color: rgb(36, 35, 50);
+ }
+
+
+.upgrade img { 
+  display: block;
+  margin: auto;
+ }
+
+ 
+ .car{
+  display: inline;
+  position: absolute;
+  margin-left: 15%;
+  opacity: 1;
+  width: 50%;
+}
+
+.ownToday {
+  width: 100%;
+  opacity: 1;
+}
+
