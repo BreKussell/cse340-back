@@ -1,4 +1,4 @@
-CREATE TYPE public."account_type " AS ENUM
+CREATE TYPE public."account_type" AS ENUM
     ('Client', 'Employee', 'Admin');
 
 ALTER TYPE public."account_type "
@@ -35,12 +35,6 @@ ALTER TABLE IF EXISTS public.inventory
 	ON UPDATE CASCADE
 	ON DELETE NO ACTION;
 
--- relationship between classification and inventory
-ALTER TABLE IF EXISTS public.inventory
-	ADD CONSTRAINT fk_classification FOREIGN KEY (classification_id)
-	REFERENCES public.classification (classification_id) MATCH SIMPLE
-	ON UPDATE CASCADE
-	ON DELETE NO ACTION;
 
 -- `account` table
 CREATE TABLE IF NOT EXISTS public.account
