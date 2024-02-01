@@ -237,3 +237,15 @@ VALUES   (
     'White',
     5
   );
+--------------------------------------------------------------------
+--Modify the "GM Hummer" record to read "a huge interior" rather than "small interiors" using a single query.
+UPDATE inventory SET inv_description = REPLACE(inv_description, 'small', 'huge')
+WHERE inv_make = 'GM' AND inv_model = 'Hummer';
+
+
+
+
+--Update all records in the inventory table to add "/vehicles" to the middle of the file path in the inv_image and
+--inv_thumbnail columns using a single query.
+UPDATE inventory SET inv_image = concat('/vehicles', inv_image), inv_thumbnail =
+concat('/vehicles', inv_thumbnail);

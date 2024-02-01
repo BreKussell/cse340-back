@@ -3,15 +3,15 @@ INSERT INTO clients (account_firstname, account_lastname, account_email, account
 VALUES ('Tony', 'Stark', 'tony@starkent.com', 'Iam1ronM@n');
 
 --Modify the Tony Stark record to change the  account_type to admin
-UPDATE clients SET  account_type = 'Admin' WHERE clientFirstname = 'Tony' AND
-clientLastname = 'Stark';
+UPDATE clients SET  account_type = 'Admin' WHERE client_firstname = 'Tony' AND
+client_lastname = 'Stark';
 
--- Delete Delete the Tony Stark record from the database.
+-- Delete Tony Stark record from the database.
 DELETE FROM account WHERE account_firstname = 'Tony' AND account_lastname = 'Stark';
 
 --Modify the "GM Hummer" record to read "a huge interior" rather than "small interiors" using a single query.
-UPDATE inventory SET invDescription = REPLACE(invDescription, 'small', 'huge')
-WHERE invMake = 'GM' AND invModel = 'Hummer';
+UPDATE inventory SET inv_description = REPLACE(inv_description, 'small', 'huge')
+WHERE inv_make = 'GM' AND inv_model = 'Hummer';
 
 -- Use an inner join to select the make and model fields from the inventory table and the classification name field from
 -- the classification table for inventory items that belong to the "Sport" category.
