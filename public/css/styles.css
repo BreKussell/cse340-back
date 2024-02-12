@@ -72,7 +72,7 @@ body {
 
 /*Navigation and top of page__________________________________________________________________________________________________*/
 
-.navigation {
+nav {
     overflow: hidden;
     background-color: rgb(36, 35, 50);
     padding: 0.5em;
@@ -81,7 +81,7 @@ body {
 
   }
   
-  .navigation a {
+  nav a {
     float:left;
     display: block;
     color: #fff;
@@ -93,12 +93,12 @@ body {
     font-weight: bold;
   }
   
-  .navigation a:hover {
+  nav a:hover {
     cursor: pointer;
     color: rgb(1,176,211);
   }
   
-  .navigation a.active {
+  nav a.active {
     color: rgb(1,176,211);
   }
 
