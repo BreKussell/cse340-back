@@ -1,58 +1,35 @@
-// Needed resources
-const express = require("express")
-const router = new express.Router()
-const utilities = require("../utilities/")
-const accountController = require("../controllers/accountController")
-const regValidate = require("../utilities/account-validation")
-const logValidate = require("../utilities/account-validation")
+/* ***********************************
+ * Account Routes
+ * ********************************* */
 
-// Process to build the Login Page 
-router.get("/login", utilities.handleErrors(accountController.buildLogin))
+// Needed Resources
+const express = require("express");
+const router = new express.Router();
+const accountController = require("../controllers/accountController");
+const utilities = require("../utilities");
+const regValidate = require('../utilities/account-validation')
 
-// Process to build the Registration Page
-router.get("/register", utilities.handleErrors(accountController.buildRegistration))
 
-// Process the Registration Data
+//Login View
+router.get("/login", utilities.handleErrors(accountController.buildLogin));
+
+//Deliver Registration View
+router.get("/register", utilities.handleErrors(accountController.buildRegister),);
+
+//Process Registration
+// Process the registration data
 router.post(
     "/register",
-    regValidate.registrationRules(),
+    regValidate.registationRules(),
     regValidate.checkRegData,
     utilities.handleErrors(accountController.registerAccount)
   )
-
-// Login/Logout Process
+// Process the login attempt
 router.post(
-    "/login",
-    logValidate.loginRules(),
-    logValidate.checkLoginData,
-    utilities.handleErrors(accountController.accountLogin))
-
-router.get("/logout", 
-    utilities.checkLogin,
-    utilities.handleErrors(accountController.accountLogout))
-
-router.get(
-    "/",
-    utilities.checkLogin,
-    utilities.handleErrors(accountController.buildManagement))
-
-// Edit Account
-router.get("/update/", 
-    utilities.checkLogin,
-    utilities.handleErrors(accountController.buildAccountUpdate))
-
-router.post("/update/", 
-    regValidate.updateAccountRules(),
-    regValidate.checkUpdateData,
-    utilities.handleErrors(accountController.updateAccount))
-
-router.post("/change",
-    regValidate.updatePasswordRules(), 
-    regValidate.checkUpdateData, 
-    utilities.handleErrors(accountController.updatePassword))
-
-router.get("/logout",
-    utilities.checkLogin,
-    utilities.handleErrors(accountController.accountLogout))
+  "/login",
+  (req, res) => {
+    res.status(200).send('login process')
+  }
+)
 
 module.exports = router;

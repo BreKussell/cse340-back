@@ -164,3 +164,196 @@ footer {
   opacity: 1;
 }
 
+
+
+
+
+/* Car Classification Display */
+
+#inv-display {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  gap: 15px;
+  padding-left: 0;
+  margin: 15px;
+}
+
+.inv-card {
+  border: 2px solid black;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 1fr 1fr 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 100%;
+  height: auto;
+}
+
+/* Individual Vehicle Display */
+
+.vehicle-cont {
+  padding: 20px 10px 50px 0px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.vehicle-cont img {
+  padding: 10px;
+  height: auto;
+  width: 100%;
+}
+
+.vehicle-details {
+  font-size: 1.0em;
+  padding: 25px;
+}
+.bold {
+  font-weight: bolder;
+  background-color: #00ffb3;
+  padding: 0;
+}
+
+/* error */
+
+#error-title {
+  width: 100%;
+}
+
+/* LOGIN AND REGISTER PAGES */
+
+.login-title {
+  font-size: 2.2em;
+}
+
+.form-box {
+  background-color: #07b2d3;
+  padding: 1em;
+  max-width: 450px;
+}
+
+.form-box div {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5px;
+}
+
+form input {
+  font-size: .9em;
+  padding: 6px;
+}
+
+.form-btn {
+  background-color: white;
+  margin-top: 5px;
+  padding: 5px 20px;
+  font-size: 1rem;
+}
+
+.form-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.register {
+  padding-top: 20px;
+  font-size: 1em;
+  display: flex;
+}
+
+.register a {
+  text-decoration: underline;
+}
+
+.register a:hover {
+  color: white;
+}
+
+/*** Remove the arrows on number inputs ***/
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* ***********************
+* INPUT VALIDATION STYLING
+* ********************* */
+
+input:required:invalid, input:focus:invalid {
+  /* Invalid input */
+  border: 2px solid red;
+  background-color: rgb(248, 190, 190);
+  
+}
+textarea:required:invalid, textarea:focus:invalid {
+  /* Invalid input */
+  border: 2px solid red;
+  background-color: rgb(248, 190, 190);
+  
+}
+
+/* Valid Input */
+
+input:required:valid {
+  border: 2px solid green;
+  background-color: rgb(210, 244, 210);
+}
+textarea:required:valid {
+  border: 2px solid green;
+  background-color: rgb(215, 255, 215);
+}
+
+/* *********************
+* ADD INVENTORY FORM BOX
+************************ */
+textarea {
+  color: #007bff;
+  min-height: 200px;
+  font-size: 1.0em;
+}
+.inv-label label {
+  font-size: 1.0em;
+}
+
+.form-box {
+  max-width: 100%;
+}
+
+select {
+  background-color: rgb(255, 255, 255);
+  margin-top: 15px;
+  padding: 5px 20px .5px 1px;
+  font-size: 1rem;
+}
+
+select:hover{
+  background-color: rgb(2, 117, 121);
+  color: white;
+}
+
+/* *********************
+* ADD MANAGEMENT FORM BOX
+************************ */
+
+.management {
+  display: grid;
+  gap: 2em;
+  background-color: #187a8d;
+  text-align: center;
+  padding: 2em;
+  margin: 25%;
+  max-width: 400px;
+}
+.management a {
+  font-size: larger;
+  background-color: white;
+  padding: 5px;
+  justify-content: center;
+}
+.management a:hover {
+  background-color: rgb(2, 146, 122);
+  color: white;
+}
+
+
