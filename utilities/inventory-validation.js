@@ -8,8 +8,6 @@ const validate = {};
  *  ********************************* */
 validate.classificationRules = () => {
   return [
-    // add_classification is required and also checks to see if the
-    // add_classification is already inside of the database (.custom)
     body("add_classification")
       .trim()
       .isLength({ min: 4 })
@@ -19,9 +17,7 @@ validate.classificationRules = () => {
         const classificationExists =
           await invModel.checkExistingClassification(add_classification);
         if (classificationExists) {
-          throw new Error(
-            "Classification with that name already exists. Please try different name.",
-          );
+          throw new Error("Classification with that name already exists. Please try different name.",);
         }
       }),
   ];
@@ -140,5 +136,50 @@ validate.checkInventoryData = async (req, res, next) => {
   }
   next();
 };
+
+/* **********************************************************
+ * Check data and return errors or continue to edit inventory
+ * ******************************************************* */
+validate.checkUpdateData = async (req, res, next) => {
+  const {
+    inv_id,
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+    classification_id,
+  } = req.body
+
+  let errors = []
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    let selectList = await utilities.getClassifications(classification_id)
+    res.render("./inventory/edit-inventory", {
+      errors,
+      title: "Edit Inventory",
+      nav,
+      selectList,
+      inv_id,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      classification_id,
+    })
+    return
+  }
+  next()
+}
 
 module.exports = validate;

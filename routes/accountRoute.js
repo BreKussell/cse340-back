@@ -1,5 +1,6 @@
 /* ***********************************
  * Account Routes
+ * Unit 4, deliver login view activity
  * ********************************* */
 
 // Needed Resources
@@ -9,14 +10,34 @@ const accountController = require("../controllers/accountController");
 const utilities = require("../utilities");
 const regValidate = require('../utilities/account-validation')
 
+/* ***********************************
+ * Deliver Login View
+ * Unit 4, deliver login view activity
+ * ********************************* */
 
-//Login View
 router.get("/login", utilities.handleErrors(accountController.buildLogin));
 
-//Deliver Registration View
+/* *******************************************
+ * Deliver Registration View
+ * Unit 4, deliver login registration activity
+ * ***************************************** */
+
 router.get("/register", utilities.handleErrors(accountController.buildRegister),);
 
-//Process Registration
+/* ***********************************
+ * Deliver account view
+  * ******************************** */
+router.get(
+  "/",
+  utilities.checkLogin,  
+  utilities.handleErrors(accountController.buildManagement)
+);
+
+/* *************************************
+ * Process Registration
+ * Unit 4, process registration activity
+ * *********************************** */
+
 // Process the registration data
 router.post(
     "/register",
@@ -27,9 +48,7 @@ router.post(
 // Process the login attempt
 router.post(
   "/login",
-  (req, res) => {
-    res.status(200).send('login process')
-  }
+  utilities.handleErrors(accountController.accountLogin)
 )
 
 module.exports = router;
