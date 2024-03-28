@@ -179,3 +179,4 @@ validate.checkUpdateData = async (req, res, next) => {
 };
 
 module.exports = validate;
+

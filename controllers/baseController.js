@@ -7,4 +7,3 @@ baseController.buildHome = async function (req, res) {
 };
 
 module.exports = baseController;
-  
