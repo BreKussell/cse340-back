@@ -1,15 +1,14 @@
 
 <header>
   <a href="#" class="mainLogo">CSE Motors</a>
-  <a href="#>"><h3 class="account">My account</h3></a>
   <div id="tools">
     <% if (locals.loggedin) { %>
     <a title="Click to manage your account" href="/account/manage"
       >Welcome <%= locals.accountData.account_firstname %></a
     >
-    <a title="Click to log out" href="/account/logout">Logout</a>
+    <a title="Click to log out" href="/account/logout"><h3 class="account">Log Out</h3></a>
     <% } else { %>
-    <a title="Click to log in" href="/account/login">Login</a>
+    <a title="Click to log in" href="/account/login"><h3 class="account">My account</h3></a>
     <% } %>
   </div>
 </header>
