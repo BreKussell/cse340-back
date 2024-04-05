@@ -1,7 +1,3 @@
-/* ***********************************
- * Account Controller
- * Unit 4, deliver login view activity
- ********************************** */
 const utilities = require("../utilities/");
 const accountModel = require("../models/account-model");
 const bcrypt = require("bcryptjs");
@@ -249,4 +245,14 @@ async function changePassword(req, res) {
   });
 }
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountHome, buildManageAccount, buildAccountUpdate, updateAccount, changePassword,};
+module.exports = {
+  buildLogin,
+  buildRegister,
+  registerAccount,
+  accountLogin,
+  buildAccountHome,
+  buildManageAccount,
+  buildAccountUpdate,
+  updateAccount,
+  changePassword,
+};
