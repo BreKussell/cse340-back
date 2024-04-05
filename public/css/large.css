@@ -16,7 +16,7 @@
 }
 .mainLogo { grid-area: mainLogo; }
 .account { grid-area: apply; }
-.navigation { grid-area: navigation; }
+nav { grid-area: navigation; }
 .carPic { grid-area: carPic; }
 .upgrade { grid-area: upgrade; }
 .upgrade {
