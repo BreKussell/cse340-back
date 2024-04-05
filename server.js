@@ -13,6 +13,7 @@ const static = require("./routes/static");
 const baseController = require("./controllers/baseController.js");
 const inventoryRoute = require("./routes/inventoryRoute.js");
 const accountRoute = require("./routes/accountRoute.js");
+const individualRoute = require('./routes/individualRoute');
 const utilities = require("./utilities");
 const session = require("express-session");
 const pool = require("./database/");
@@ -68,10 +69,16 @@ app.use(static)
 app.get("/", utilities.handleError(baseController.buildHome))
 
 // Inventory route
-app.use("/inv", inventoryRoute)
+app.use('/', utilities.handleErrors(inventoryRoute));
+
+// Add Inventory route
+app.use('/inv', require('./routes/vehicleRoute'));
 
 // Account route
 app.use("/account", accountRoute)
+
+// Individual routes
+app.use('/', utilities.handleErrors(individualRoute));
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
