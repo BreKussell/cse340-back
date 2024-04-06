@@ -29,7 +29,7 @@ async function getVendorById (vendor_id) {
 /* ***************************
  *  Get all classification data
  * ************************** */
-async function getAllVvendors(){
+async function getAllVendors(){
     return await pool.query("SELECT * FROM public.vendor ORDER BY vendor_name")
   }
 
@@ -59,4 +59,4 @@ async function updateVendor(vendor_id, vendor_name, vendor_address){
   }
 }
 
-module.exports = { registerVendor, getAllVendor, getVendorById, deleteVendor, updateVendor }
+module.exports = { registerVendor, getAllVendors, getVendorById, deleteVendor, updateVendor }
