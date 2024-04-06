@@ -1,0 +1,34 @@
+<!-- **************
+*   Management View
+*************** -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else { res.redirect('/') } %> <% if (messages && messages.notice) { %>
+    <p class="flash-message"><%= messages.notice %></p>
+    <% } %> <% if (errors) { %>
+    <ul class="notice">
+      <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+    <% } %>
+
+
+
+    <div class="management-links">
+        <a href="./add.ejs">Add New Vendor</a>
+        <a href="./edit.ejs">Edit Vendor</a>
+        <a href="./delete.ejs">Delete Vendor</a>
+      </div>
+      
+      <div id="inventory-management-menu">
+        <h2>Manage Vendor</h2>
+        <p>Select classification to view vehicles</p>
+        <%- VendorSelect %>
+      </div>
+      
+      <table id="inventoryDisplay"></table>
+      <noscript>JavaScript must be enables to use this page.</noscript>
+    
+
+<script src="../../js/vendor-update.js"></script>

@@ -21,6 +21,25 @@ async function getInventoryByClassificationId(classification_id) {
   }
 }
 
+
+/* ***************************
+ *  Get all inventory items and vendor data by vendor_id
+ * ************************** */
+async function getInventoryByVendorId(vendor_id) {
+  try {
+    const data = await pool.query(
+      `SELECT i.*, v.vendor_name, v.vendor_address FROM public.inventory AS i 
+      JOIN public.vendor AS v 
+      ON i.vendor_id = v.vendor_id 
+      WHERE i.vendor_id = $1`,
+      [vendor_id]
+    )
+    return data.rows
+  } catch (error) {
+    console.error("getvendorsbyid error " + error)
+  }
+}
+
 /* ********************
  * Get vehicle detail data by inv_id
  * ********************/

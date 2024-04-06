@@ -1,0 +1,38 @@
+<!-- ************************
+*   Edit vendor View
+************************* -->
+
+
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else { res.redirect('/') } %> <% if (messages && messages.notice) { %>
+    <p class="flash-message"><%= messages.notice %></p>
+    <% } %> <% if (errors) { %>
+    <ul class="notice">
+      <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+    <% } %>
+    
+    <p class="form-label">
+      <i>All fields are required</i>
+    </p>
+
+
+    
+        <form  class="management-form inventory-form"action="/vendor/edit" method="post">
+            <label for="vendorName">Name*:</label><input type="text" name="vendor_name" id="vendorName" value="<%= locals.vendor_name %>" required>
+            <label for="vendorAddress">Street Address*:</label><input type="text" name="vendor_address" id="vendorAddress" value="<%= locals.vendor_address %>" required>
+            
+            <button type="submit" disabled>Update Vendor</button>
+            
+            <input type="hidden" name="vendor_id"
+                <% if(locals.vendor_id) { %> value="<%= locals.vendor_id %>"
+            <% } %>>
+        
+        </form>
+    
+
+
+<script src="../../js/vendor-update.js"></script>

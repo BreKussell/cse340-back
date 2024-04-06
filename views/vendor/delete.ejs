@@ -1,0 +1,28 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else { res.redirect('/') } %> <% if (messages && messages.notice) { %>
+    <p class="flash-message"><%= messages.notice %></p>
+    <% } %> <% if (errors) { %>
+    <ul class="notice">
+      <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+    <% } %>
+
+    <p>Confirm Deletion - The delete is permanent.</p>
+
+    
+        <form class="management-form inventory-form" action="/vendor/delete" method="post"  class="deleteForm">
+            <label for="vendorName">Name*:</label><input type="text" name="vendor_name" id="vendorName" value="<%= locals.vendor_name %>" disabled>
+            <label for="vendorAddress">Street Address*:</label><input type="text" name="vendor_address" id="vendorAddress" value="<%= locals.vendor_address %>" disabled>
+            
+            <button type="submit">Delete Vendor</button>
+    
+      <input
+        type="hidden"
+        name="vendor_id"
+        value="<% if(locals.vendor_id) { %><%= locals.vendor_id %><% } %>"
+      />
+        </form>
+ 

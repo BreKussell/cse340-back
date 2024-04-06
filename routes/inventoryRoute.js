@@ -11,6 +11,9 @@ router.get(
   utilities.handleError(invController.buildByClassificationId)
 );
 
+// Route to build inventory by vendor view
+router.get("/vendor/:vendorId", utilities.handleErrors(invController.buildByVendorId));
+
 // Route for detail view
 router.get("/detail/:inv_id", utilities.handleError(invController.buildById));
 

@@ -2,6 +2,7 @@ const invModel = require("../models/inventory-model");
 const Util = {};
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const vendorModel = require("../models/vendor-model")
 
 /* ************************
  * Constructs the nav HTML unordered list
@@ -25,6 +26,39 @@ Util.getNav = async function (req, res, next) {
   list += "</ul>";
   return list;
 };
+
+
+/* **************************************
+* Build the vendor view HTML
+* ************************************ */
+Util.builVendorGrid = async function(data){
+  let grid = '';
+  if(data.length > 0){
+    data.forEach(dealer => { 
+      grid +='<div>';
+        grid += `<a href="../../inv/vendor/${dealer.vendor_id}" title="${dealer.vendor_name} ${dealer.vendor_address} - Used Cars">`;
+          grid += `${dealer.vendor_name} (${dealer.vendor_address})`;
+        grid += '</a>';
+      grid += '</div>';
+    })
+  } else { 
+    grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
+  }
+  return grid
+}
+
+
+/* ************************
+ * Constructs the vendor options HTML for forms
+ ************************** */
+Util.getVendorOptions = async function (req, res, next) {
+  let data = await vendorModel.getAllVendors()
+  let tbr = `<option value="" label="No option selected"></option>`;
+  data.rows.forEach((row) => {
+    tbr += `<option value="${row.vendor_id}"${row.vendor_id == req ? " selected" : "" }>${row.vendor_name}</option>`;
+  })
+  return tbr
+}
 
 /* **************************************
  * Build the classification view HTML
