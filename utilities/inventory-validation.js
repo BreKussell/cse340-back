@@ -1,4 +1,4 @@
-const utilities = require(".");
+const utilities = require("./index");
 const { body, validationResult } = require("express-validator");
 const validate = {};
 const invModel = require("../models/inventory-model");
@@ -174,6 +174,52 @@ validate.checkUpdateData = async (req, res, next) => {
     });
   }
 
+  /* ******************************
+ * Check data and return errors or continue to add inventory
+ * ***************************** */
+validate.checkInventoryData = async (req, res, next) => {
+    const { inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id, vendor_id } = req.body
+    let errors = []
+    errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      let nav = await utilities.getNav()
+      const classificationOptions = await utilities.getClassificationOptions(classification_id)
+      const dealershipOptions = await utilities.getDealershipOptions(vendor_id)
+      res.render("./inventory/add-inventory", {
+        errors,
+        title: "Add New Inventory",    
+        nav,
+        classificationOptions,
+        dealershipOptions,
+        inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color,
+      })
+      return
+    }
+    
+}
+
+/* ******************************
+ * Check data and return errors or continue to inventory edit
+ * ***************************** */
+validate.checkUpdateData = async (req, res, next) => {
+  const { inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id, inv_id, vendor_id } = req.body
+  let errors = []
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    const classificationOptions = await utilities.getClassificationOptions(classification_id)
+    const dealershipOptions = await utilities.getDealershipOptions(vendor_id)
+    res.render("./inventory/edit-inventory", {
+      errors,
+      title: "Edit Inventory: " + inv_make + " " + inv_model,   
+      nav,
+      classificationOptions,
+      dealershipOptions,
+      inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, inv_id,
+    })
+    return
+  }
+}
   
   next();
 };

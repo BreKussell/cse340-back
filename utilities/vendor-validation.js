@@ -1,5 +1,5 @@
-const utilities = require(".")
-const { body, validationResult } = require("express-validator")
+const utilities = require("./index");
+const { body, validationResult } = require("express-validator");
 const vendorModel = require("../models/vendor-model")
 const validate = {}
 
@@ -24,25 +24,27 @@ validate.vendorRules = () => {
 }
 
 /* ******************************
- * Check data and return errors or continue to vendor addition
+ * Check classification data
  * ***************************** */
 validate.checkVendorData = async (req, res, next) => {
-    const { vendor_name, vendor_address } = req.body
-    let errors = []
-    errors = validationResult(req)
-    if (!errors.isEmpty()) {
-      let nav = await utilities.getNav()
-      res.render("./vendor/add", {
-        errors,
-        metaTitle: `Create a New Vendor - CSE 340`,
-        title: "Add A New Vendor",    
-        nav,
-        vendor_name, vendor_address,
-      })
-      return
-    }
-    next()
-}
+  const errors = validationResult(req);
+  const {vendor_name } = req.body;
+
+  // if there are errors, send back with error messages
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    return res.render("../vendor/add", {
+      title: "Add vendor",
+      nav,
+      errors,
+      classification_name,
+      messages: req.flash(),
+    });
+  }
+
+  
+  next();
+};
 
 /*  **********************************
  *  Vendor Data Validation Rules
@@ -64,19 +66,18 @@ validate.vendorUpdateRules = () => {
 }
 
 /* ******************************
- * Check data and return errors or continue to account update
+ *  Check new vendor data
  * ***************************** */
-validate.checkVendorUpdateData = async (req, res, next) => {
+validate.checkInventoryData = async (req, res, next) => {
+  const errors = validationResult(req);
   const { vendor_id, vendor_name, vendor_address } = req.body
-  let errors = []
   errors = validationResult(req)
   if (!errors.isEmpty()) {
     const vendorInfo = await vendorModel.getVendorById(vendor_id)
     let nav = await utilities.getNav()
-    res.render("./vendor/edit", {
+    res.render("../vendor/edit", {
       errors,
-      metaTitle: "Edit vendor - " + vendorInfo.vendor_name + " - CSE 340",
-      title: "Edit vendor - " + vendorInfo.vendor_address,
+      title: "Edit vendor : " + vendorInfo.vendor_address,
       nav,
       vendor_name: vendorInfo.vendor_name,
       vendor_address: vendorInfo.vendor_address,

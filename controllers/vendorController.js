@@ -1,5 +1,5 @@
 const vendorModel = require("../models/vendor-model")
-const utilities = require("../utilities/")
+const utilities = require("../utilities/index")
 
 const vendorCont = {}
 
@@ -8,8 +8,7 @@ const vendorCont = {}
 * *************************************** */
 vendorCont.buildManagement = async function (req, res, next) {
   let nav = await utilities.getNav()
-  res.render("./vendor/vendor-manage", {
-    metaTitle: `Vendor Management - CSE 340`,
+  res.render("../views/vendor/vendor-manage", {
     title: "Vendor Management",
     nav,
     errors: null,
@@ -21,8 +20,7 @@ vendorCont.buildManagement = async function (req, res, next) {
 * *************************************** */
 vendorCont.buildAdd = async function (req, res, next) {
   let nav = await utilities.getNav()
-  res.render("./vendor/add", {
-    metaTitle: `Create a New Vendor - CSE 340`,
+  res.render("../views/vendor/add", {
     title: "Add A New Vendor",
     nav,
     errors: null,
@@ -46,16 +44,14 @@ vendorCont.registerVendor = async function registerVendor(req, res) {
       "notice",
       `Congratulations, ${vendor_name} has been successfully added to the site.`
     )
-    res.status(201).render("./vendor/vendor-manage", {
-      metaTitle: `vendor Management - CSE 340`,
+    res.status(201).render("../views/vendor/vendor-manage", {
       title: "vendor Management",
       nav,
       errors: null,
     })
   } else {
     req.flash("notice", "Sorry, the Vendor could not be added.")
-    res.status(501).render("./vendor/add", {
-      metaTitle: `Add Vendor Failed - CSE 340`,
+    res.status(501).render("../views/vendor/add", {
       title: "Add Vendor",
       nav,
       errors: null,
@@ -66,7 +62,7 @@ vendorCont.registerVendor = async function registerVendor(req, res) {
 /* ***************************
  *  Return Inventory by Classification As JSON
  * ************************** */
-vendorContCont.getVendorJSON = async function getVendor(req, res, next) {
+vendorCont.getVendorJSON = async function getVendor(req, res, next) {
   const vendorData = await vendorModel.getAllVendors()
   if (vendorData) {
     return res.json(vendorData.rows)
@@ -79,11 +75,10 @@ vendorContCont.getVendorJSON = async function getVendor(req, res, next) {
  *  Build vendor delete form
  * ************************************** */
 vendorCont.buildVendorDeleteView = async function buildVendorDeleteView(req, res, next) {
-  const vendor_id = parseInt(req.params.vendorId)
+  const vendor_id = parseInt(req.params.vendor_id)
   const nav = await utilities.getNav()
   const vendorInfo = await vendorModel.getVendorById(vendor_id)
-  res.render("./vendor/delete", {
-    metaTitle: "Delete Vendor - " + vendorInfo.vendor_name + " - CSE 340",
+  res.render("../views/vendor/delete", {
     title: "Delete Vendor - " + vendorInfo.vendor_name,
     nav,
     vendor_id: vendorInfo.vendor_id,
@@ -109,11 +104,10 @@ vendorCont.deleteVendor = async function deleteVendor(req, res) {
   const itemName = `${theVendor.vendor_name}`
   if (deleteResult) {
     req.flash("notice", `The ${itemName} Vendor was successfully deleted.`)
-    res.redirect("/vendor/")
+    res.redirect("../views/vendor/")
   } else {
     req.flash("notice", "Sorry, the delete failed.")
     res.status(501).render("vendor/delete", {
-      metaTitle: `Delete ${itemName} Failed - CSE 340`,
       title: `Delete ${itemName}`,
       nav,
       vendor_name,
@@ -127,13 +121,12 @@ vendorCont.deleteVendor = async function deleteVendor(req, res) {
 /* ****************************************
  *  Build account edit form
  * ************************************** */
-vendorContCont.buildVendorEditView = async function buildVendorEditView(req, res, next) {
-  const vendor_id = parseInt(req.params.vendorId)
+vendorCont.buildVendorEditView = async function buildVendorEditView(req, res, next) {
+  const vendor_id = parseInt(req.params.vendor_id)
   const nav = await utilities.getNav()
   const vendorInfo = await vendorModel.getVendorById(vendor_id)
-  res.render("./vendor/edit", {
-    metaTitle: "Edit Vendor - " + vendorInfo.vendor_name + " - CSE 340",
-    title: "Edit Vendor - " + vendorInfo.vendor_name,
+  res.render("../views/vendor/edit", {
+    title: "Edit Vendor: " + vendorInfo.vendor_name,
     nav,
     vendor_id,
     vendor_name: vendorInfo.vendor_name,
@@ -160,16 +153,14 @@ vendorCont.updateVendor = async function updateVendor(req, res) {
       "notice",
       `The information associated with the ${vendor_name} has been successfully updated!`
     )
-    res.status(201).render("./vendor/vendor-manage", {
-      metaTitle: `Vendor Management - CSE 340`,
+    res.status(201).render("../views/vendor/vendor-manage", {
       title: "Vendor Management",
       nav,
       errors: null,
     })
   } else {
     req.flash("notice", "Sorry, the update failed.")
-    res.status(501).render("./vendor/management", {
-      metaTitle: `Vendor Management - CSE 340`,
+    res.status(501).render("../views/vendor/vendor-manage", {
       title: "Vendor Management",
       nav,
       errors: null,

@@ -36,7 +36,7 @@ async function getInventoryByVendorId(vendor_id) {
     )
     return data.rows
   } catch (error) {
-    console.error("getvendorsbyid error " + error)
+    console.error("getVendorsById error " + error)
   }
 }
 
@@ -169,4 +169,4 @@ async function deleteInventory(inv_id) {
   }
 }
 
-module.exports = {getClassifications,getInventoryByClassificationId,getInventoryItemById,addClassification,addInventory,updateInventory,deleteInventory,};
+module.exports = {getClassifications,getInventoryByClassificationId,getInventoryItemById,getInventoryByVendorId,addClassification,addInventory,updateInventory,deleteInventory,};

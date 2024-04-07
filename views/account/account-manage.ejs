@@ -18,6 +18,17 @@
         >Edit Account Information</a
       >
     </p>
+
+    <% if (account.account_type === 'client' %>
+    <h3>Vendor Management</h3>
+    <p><a href="/ventor/">Edit Vendors</a></p>
+    <% } %>
+  
+    <p>
+      <a href="/account/update/<%= account.account_id %>"
+        >Edit Account Information</a
+      >
+    </p>
     <% } %> <% if (errors) { %>
     <ul class="notice">
       <% errors.array().forEach(error => { %>

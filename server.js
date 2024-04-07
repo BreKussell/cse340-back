@@ -13,7 +13,6 @@ const static = require("./routes/static");
 const baseController = require("./controllers/baseController.js");
 const inventoryRoute = require("./routes/inventoryRoute.js");
 const accountRoute = require("./routes/accountRoute.js");
-//
 const vendorRoute = require("./routes/vendorRoute")
 const utilities = require("./utilities");
 const session = require("express-session");

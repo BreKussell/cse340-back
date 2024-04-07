@@ -1,6 +1,7 @@
 // Needed Resources
 const express = require("express");
 const router = new express.Router();
+const vendorController = require("../controllers/vendorController");
 const invController = require("../controllers/invController");
 const utilities = require("../utilities");
 const invValidate = require("../utilities/inventory-validation");
@@ -11,8 +12,8 @@ router.get(
   utilities.handleError(invController.buildByClassificationId)
 );
 
-// Route to build inventory by vendor view
-router.get("/vendor/:vendorId", utilities.handleErrors(invController.buildByVendorId));
+// Route to build vendor view
+router.get("/vendor/:vendor_id", utilities.handleError(vendorController.buildByVendorId));
 
 // Route for detail view
 router.get("/detail/:inv_id", utilities.handleError(invController.buildById));

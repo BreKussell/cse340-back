@@ -31,13 +31,13 @@ Util.getNav = async function (req, res, next) {
 /* **************************************
 * Build the vendor view HTML
 * ************************************ */
-Util.builVendorGrid = async function(data){
+Util.buildVendorGrid = async function(data){
   let grid = '';
   if(data.length > 0){
-    data.forEach(dealer => { 
+    data.forEach(vendor => { 
       grid +='<div>';
-        grid += `<a href="../../inv/vendor/${dealer.vendor_id}" title="${dealer.vendor_name} ${dealer.vendor_address} - Used Cars">`;
-          grid += `${dealer.vendor_name} (${dealer.vendor_address})`;
+        grid += `<a href="../inv/vendor/${vendor.vendor_id}" title="${vendor.vendor_name} ${vendor.vendor_address} :`;
+          grid += `${vendor.vendor_name} (${vendor.vendor_address})`;
         grid += '</a>';
       grid += '</div>';
     })
